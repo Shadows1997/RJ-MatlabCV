@@ -1,0 +1,2614 @@
+function varargout = image_processing_system(varargin)
+% IMAGE_PROCESSING_SYSTEM MATLAB code for image_processing_system.fig
+%      IMAGE_PROCESSING_SYSTEM, by itself, creates a new IMAGE_PROCESSING_SYSTEM or raises the existing
+%      singleton*.
+%
+%      H = IMAGE_PROCESSING_SYSTEM returns the handle to a new IMAGE_PROCESSING_SYSTEM or the handle to
+%      the existing singleton*.
+%
+%      IMAGE_PROCESSING_SYSTEM('CALLBACK',hObject,eventData,handles,...) calls the local
+%      function named CALLBACK in IMAGE_PROCESSING_SYSTEM.M with the given input arguments.
+%
+%      IMAGE_PROCESSING_SYSTEM('Property','Value',...) creates a new IMAGE_PROCESSING_SYSTEM or raises the
+%      existing singleton*.  Starting from the left, property value pairs are
+%      applied to the GUI before image_processing_system_OpeningFcn gets called.  An
+%      unrecognized property name or invalid value makes property application
+%      stop.  All inputs are passed to image_processing_system_OpeningFcn via varargin.
+%
+%      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
+%      instance to run (singleton)".
+%
+% See also: GUIDE, GUIDATA, GUIHANDLES
+
+% Edit the above text to modify the response to help image_processing_system
+
+% Last Modified by GUIDE v2.5 31-Mar-2021 17:08:14
+
+% Begin initialization code - DO NOT EDIT
+gui_Singleton = 1;
+gui_State = struct('gui_Name',       mfilename, ...
+                   'gui_Singleton',  gui_Singleton, ...
+                   'gui_OpeningFcn', @image_processing_system_OpeningFcn, ...
+                   'gui_OutputFcn',  @image_processing_system_OutputFcn, ...
+                   'gui_LayoutFcn',  [] , ...
+                   'gui_Callback',   []);
+if nargin && ischar(varargin{1})
+    gui_State.gui_Callback = str2func(varargin{1});
+end
+
+if nargout
+    [varargout{1:nargout}] = gui_mainfcn(gui_State, varargin{:});
+else
+    gui_mainfcn(gui_State, varargin{:});
+end
+
+
+
+% End initialization code - DO NOT EDIT
+
+
+% --- Executes just before image_processing_system is made visible.
+function image_processing_system_OpeningFcn(hObject, eventdata, handles, varargin)
+% This function has no output args, see OutputFcn.
+% hObject    handle to figure
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+% varargin   command line arguments to image_processing_system (see VARARGIN)
+
+% Choose default command line output for image_processing_system
+  handles.output = hObject;
+tu_biao1=importdata('保存.jpg');%将33.jpg改成你要添加的图标的名称
+set(handles.pushbutton1,'CDATA',tu_biao1); 
+tu_biao2=importdata('打开.jpg');%将33.jpg改成你要添加的图标的名称
+set(handles.pushbutton3,'CDATA',tu_biao2); 
+
+
+
+
+
+  guidata(hObject, handles);
+
+
+
+
+
+
+% UIWAIT makes image_processing_system wait for user response (see UIRESUME)
+% uiwait(handles.figure1);
+
+
+% --- Outputs from this function are returned to the command line.
+function varargout = image_processing_system_OutputFcn(hObject, eventdata, handles) 
+% varargout  cell array for returning output args (see VARARGOUT);
+% hObject    handle to figure
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Get default command line output from handles structure
+varargout{1} = handles.output;
+
+
+
+function edit1_Callback(hObject, eventdata, handles)
+% hObject    handle to edit1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit1 as text
+%        str2double(get(hObject,'String')) returns contents of edit1 as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function edit1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function edit4_Callback(hObject, eventdata, handles)
+% hObject    handle to edit10 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit10 as text
+%        str2double(get(hObject,'String')) returns contents of edit10 as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function edit4_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit10 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --------------------------------------------------------------------
+function Untitled_1_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --------------------------------------------------------------------
+function Untitled_2_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%打开图片
+global im;
+axes(handles.axes1);  
+[filename,pathname]=uigetfile({'*.bmp;*.jpg;*.png;*.jpeg;*.tif'},...
+                'Pick an image',...
+                'D:\matlab\bin\matlab work');  
+str=[pathname filename];  
+if isequal(filename,0)||isequal(pathname,0)  
+    warndlg('Please select a picture first!','Warning');  
+    return;  
+else  
+    im = imread(str); 
+    imshow(im);    
+end
+axes(handles.axes1);%用axes命令设定当前操作的坐标轴是axes1
+fpath=[pathname filename];%将文件名和目录名组合成一个完整的路径
+imshow(imread(fpath));
+
+% --------------------------------------------------------------------
+function Untitled_3_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_3 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)%保存图片
+[FileName,PathName] = uiputfile({'*.jpg','JPEG(*.jpg)';...  
+                                 '*.bmp','Bitmap(*.bmp)';...  
+                                 '*.gif','GIF(*.gif)';...  
+                                 '*.*',  'All Files (*.*)'},...  
+                                 'Save Picture','Untitled');  
+if FileName==0  
+    return;  
+else  
+    h=getframe(handles.axes2);   
+    imwrite(h.cdata,[PathName,FileName]);  
+end
+
+
+% --------------------------------------------------------------------
+function Untitled_6_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_6 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --------------------------------------------------------------------
+function Untitled_7_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_7 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%RGB图转灰度图(自定义)
+warning off       %取消警告
+feature jit off   %加速通道
+tic
+global im
+axes(handles.axes2);
+imrgb=im;
+addition1=inputdlg('R值比例(0-1)：','颜色比例');
+addition2=cell2mat(addition1);%addition数值为元胞，转化为文字
+addition3=str2num(addition2);%addition2数值为文字，转化为数值
+a=addition3(1,1);%输入值
+addition4=inputdlg('G值比例(0-1)：','颜色比例');
+addition5=cell2mat(addition4);%addition数值为元胞，转化为文字
+addition6=str2num(addition5);%addition2数值为文字，转化为数值
+b=addition6(1,1);%输入值
+[m,n,t]=size(imrgb);
+for i=1:m
+    for j=1:n
+        for k=1:t
+          imgray(i,j,k)=a*imrgb(i,j,1)+b*imrgb(i,j,2)+(1-a-b)*imrgb(i,j,3);%加权实现从真彩到灰度的降维转换
+         end
+    end
+end
+imshow(imgray);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+% --------------------------------------------------------------------
+function Untitled_8_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_8 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%RGB图转索引图
+warning off       %取消警告
+feature jit off   %加速通道
+tic
+global im
+axes(handles.axes2);
+addition=inputdlg('颜色种类：','颜色种类');
+addition2=cell2mat(addition);%addition数值为元胞，转化为文字
+addition3=str2num(addition2);%addition2数值为文字，转化为数值
+b=addition3(1,1);%输入值
+[X1,map1]=rgb2ind(im,b);%将RGB图像转化为索引图像，颜色种类N至少64种
+imshow(X1);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+% --------------------------------------------------------------------
+function Untitled_9_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_9 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%RGB图转二值图
+warning off       %取消警告
+feature jit off   %加速通道
+tic
+global im
+axes(handles.axes2);
+addition=inputdlg('阈值（0-1）：','RGB图转二值图');
+addition2=cell2mat(addition);%addition数值为元胞，转化为文字
+addition3=str2num(addition2);%addition2数值为文字，转化为数值
+b=addition3(1,1);%输入值
+BW=im2bw(im,b);
+imshow(BW);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+
+% --------------------------------------------------------------------
+function Untitled_10_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_10 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --------------------------------------------------------------------
+function Untitled_11_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_11 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --------------------------------------------------------------------
+function Untitled_12_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_12 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --------------------------------------------------------------------
+function Untitled_13_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_13 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --------------------------------------------------------------------
+function Untitled_14_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_14 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --------------------------------------------------------------------
+function Untitled_15_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_15 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --------------------------------------------------------------------
+function Untitled_16_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_16 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%线性灰度变换
+warning off       %取消警告
+feature jit off   %加速通道
+tic
+global im
+axes(handles.axes2);
+addition=inputdlg('线性度取值：','线性度取值');
+addition2=cell2mat(addition);%addition数值为元胞，转化为文字
+addition3=str2num(addition2);%addition2数值为文字，转化为数值
+b=addition3(1,1);%输入值
+gamma=b;                            %设定调整线性度取值
+I=im;                   			  %读入要处理的图像，并赋值给I
+R=I;                                  %将图像数据赋值给R
+R (:,:,2)=0;                          %将原图像变成单色图像，保留红色
+R(:,:,3)=0;
+R1=imadjust(R,[0.5 0.8],[0 1],gamma); %利用函数imadjust调整R的灰度，结果返回R1
+G=I;								  %将图像数据赋值给G
+G(:,:,1)=0;							  %将原图像变成单色图像，保留绿色
+G(:,:,3)=0;
+G1=imadjust(G,[0 0.3],[0 1],gamma);	  %利用函数imadjust调整G的灰度，结果返回G1
+B=I;								  %将图像数据赋值给B
+B(:,:,1)=0;							  %将原图像变成单色图像，保留蓝色
+B(:,:,2)=0;
+B1=imadjust(B,[0 0.3],[0 1],gamma);	  %利用函数imadjust调整B的灰度，结果返回B1
+I1=R1+G1+B1;                          %求变换后的RGB图像  
+imshow(I1);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+% --------------------------------------------------------------------
+function Untitled_17_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_17 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%分段线性灰度变换
+warning off       %取消警告
+feature jit off   %加速通道
+tic
+global im
+axes(handles.axes2);
+R=im;                   %读入原图像，赋值给R
+J=rgb2gray(R);          %将彩色图像数据R转换为灰度图像数据J
+[M,N]=size(J);          %获得灰度图像数据J的行列数M，N
+x=1;y=1;                %定义行索引变量x、列索引变量y    
+for x=1:M
+    for y=1:N
+        if (J(x,y)<=35);     %对灰度图像J进行分段处理，处理后的结果返回给矩阵H
+            H(x,y)=J(x,y)*10;
+        elseif(J(x,y)>35&J(x,y)<=75);
+            H(x,y)=(10/7)*[J(x,y)-5]+50;
+        else(J(x,y)>75);
+            H(x,y)=(105/180)*[J(x,y)-75]+150;
+        end
+    end
+end
+set(0,'defaultFigurePosition',[100,100,1000,500]);%修改图形图像位置的默认设置
+set(0,'defaultFigureColor',[1 1 1])%修改图形背景颜色的设置
+imshow(H);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+% --------------------------------------------------------------------
+function Untitled_18_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_18 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%非线性灰度变换
+warning off       %取消警告
+feature jit off   %加速通道
+tic
+global im
+axes(handles.axes2);
+R=im;                                       %读入图像，赋值给R
+G=rgb2gray(R);                              %转成灰度图像
+J=double(G);                                %数据类型转换成双精度
+H=(log(J+1))/10;                             %进行基于常用对数的非线性灰度变换
+set(0,'defaultFigurePosition',[100,100,1000,500]);%修改图形图像位置的默认设置
+set(0,'defaultFigureColor',[1 1 1])%修改图形背景颜色的设置
+imshow(H);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+
+% --------------------------------------------------------------------
+function Untitled_19_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_19 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%加法
+warning off       %取消警告
+feature jit off   %加速通道
+global im
+tic
+axes(handles.axes2);
+addition=inputdlg('加数：','加法');
+addition2=cell2mat(addition);%addition数值为元胞，转化为文字
+addition3=str2num(addition2);%addition2数值为文字，转化为数值
+b=addition3(1,1);%输入值
+J=imadd(im,b);
+imshow(J);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+% --------------------------------------------------------------------
+function Untitled_20_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_20 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%减法
+warning off       %取消警告
+feature jit off   %加速通道
+global im
+tic
+axes(handles.axes2);
+addition=inputdlg('减数：','减法');
+addition2=cell2mat(addition);%addition数值为元胞，转化为文字
+addition3=str2num(addition2);%addition2数值为文字，转化为数值
+b=addition3(1,1);%输入值
+J=imsubtract(im,b);
+imshow(J);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+% --------------------------------------------------------------------
+function Untitled_21_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_21 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%乘法
+warning off       %取消警告
+feature jit off   %加速通道
+global im
+tic
+axes(handles.axes2);
+addition=inputdlg('乘数：','乘法');
+addition2=cell2mat(addition);%addition数值为元胞，转化为文字
+addition3=str2num(addition2);%addition2数值为文字，转化为数值
+b=addition3(1,1);%输入值
+J=immultiply(im,b);
+imshow(J);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+% --------------------------------------------------------------------
+function Untitled_22_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_22 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%除法
+warning off       %取消警告
+feature jit off   %加速通道
+global im
+tic
+axes(handles.axes2);
+addition=inputdlg('除数：','除法');
+addition2=cell2mat(addition);%addition数值为元胞，转化为文字
+addition3=str2num(addition2);%addition2数值为文字，转化为数值
+b=addition3(1,1);%输入值
+J=imdivide(im,b);
+imshow(J);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+
+% --------------------------------------------------------------------
+function Untitled_23_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_23 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%与运算操作 (图像阈值分别为0.2、0.4与运算)
+warning off       %取消警告
+feature jit off   %加速通道
+global im
+tic
+axes(handles.axes2);
+addition=inputdlg('阈值（0-1）：','图像1');
+addition2=cell2mat(addition);%addition数值为元胞，转化为文字
+addition3=str2num(addition2);%addition2数值为文字，转化为数值
+b=addition3(1,1);%输入值
+I1=im2bw(im,b);
+addition=inputdlg('阈值（0-1）：','图像1');
+addition4=cell2mat(addition);%addition数值为元胞，转化为文字
+addition5=str2num(addition2);%addition2数值为文字，转化为数值
+c=addition5(1,1);%输入值
+I2=im2bw(im,c);
+I3=I1&I2;
+imshow(I3);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+% --------------------------------------------------------------------
+function Untitled_24_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_24 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%或运算操作 (图像阈值分别为0.2、0.4或运算)
+warning off       %取消警告
+feature jit off   %加速通道
+global im
+tic
+axes(handles.axes2);
+I1=im2bw(im,0.2);
+I2=im2bw(im,0.4);
+I3=I1|I2;
+imshow(I3);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+
+% --------------------------------------------------------------------
+function Untitled_25_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_25 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%非运算操作 
+warning off       %取消警告
+feature jit off   %加速通道
+global im
+tic
+axes(handles.axes2);
+I1=im2bw(im);
+I2=~I1;
+imshow(I2);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+
+% --------------------------------------------------------------------
+function Untitled_26_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_26 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --------------------------------------------------------------------
+function Untitled_27_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_27 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%平移图像
+warning off       %取消警告
+feature jit off   %加速通道
+tic
+global im
+axes(handles.axes2);
+I=im; %输入图像
+addition=inputdlg('横坐标：','横坐标');
+addition2=cell2mat(addition);%addition数值为元胞，转化为文字
+addition3=str2num(addition2);%addition2数值为文字，转化为数值
+a=addition3(1,1);%输入值横坐标
+addition=inputdlg('纵坐标：','纵坐标');
+addition2=cell2mat(addition);%addition数值为元胞，转化为文字
+addition3=str2num(addition2);%addition2数值为文字，转化为数值
+b=addition3(1,1);%输入值纵坐标
+J1=move(I,a,b);%移动原图像
+imshow(J1);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+function J=move(I,a,b) 
+% 定义一个函数名字move，I表示输入图像，a和b描述I图像沿着x轴和y轴移动的距离
+% 不考虑平移以后，图像溢出情况，找不到对应点的地方都赋值为1
+[M,N,G]=size(I);%获取输入图像I的大小
+I=im2double(I); %将图像数据类型转换成双精度
+J=ones(M,N,G);  %初始化新图像矩阵全为1，大小与输入图像相同
+for i=1:M
+    for j=1:N
+        if((i+a)>=1&&(i+a<=M)&&(j+b>=1)&&(j+b<=N));%判断平移以后行列坐标是否超出范围
+            J(i+a,j+b,:)=I(i,j,:);%进行图像平移
+        end
+    end
+end
+
+% --------------------------------------------------------------------
+function Untitled_28_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_28 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --------------------------------------------------------------------
+function Untitled_29_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_29 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%缩放图像（缩小后图像丢失一部分原图信息，放大后会使得图像更加清晰）
+warning off       %取消警告
+feature jit off   %加速通道
+tic
+global im
+axes(handles.axes2);
+addition=inputdlg('缩放大小：','横坐标');
+addition2=cell2mat(addition);%addition数值为元胞，转化为文字
+addition3=str2num(addition2);%addition2数值为文字，转化为数值
+b=addition3(1,1);%输入值横坐标
+J1=imresize(im,b);
+imshow(J1);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+% --------------------------------------------------------------------
+function Untitled_30_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_30 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%转置图像
+warning off       %取消警告
+feature jit off   %加速通道
+tic
+global im
+axes(handles.axes2);
+J1=transp(im);
+imshow(J1);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+
+function J=transp(I)
+%I表示输入的原始图像
+%J表示经过转置以后的图像
+[M,N,G]=size(I);%获取输入图像I的大小
+I=im2double(I); %将图像数据类型转换成双精度
+J=ones(N,M,G);  %初始化新图像矩阵全为1，大小与输入图像相同
+for i=1:M
+    for j=1:N
+      J(j,i,:)=I(i,j,:);%进行图像转置    
+    end
+end
+
+% --------------------------------------------------------------------
+function Untitled_31_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_31 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%旋转
+warning off       %取消警告
+feature jit off   %加速通道
+global im
+tic
+axes(handles.axes2);
+addition=inputdlg('旋转角度：','旋转');
+addition2=cell2mat(addition);%addition数值为元胞，转化为文字
+addition3=str2num(addition2);%addition2数值为文字，转化为数值
+b=addition3(1,1);%输入值
+J=imrotate(im,b);
+imshow(J);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+% --------------------------------------------------------------------
+function Untitled_32_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_32 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%水平镜像
+warning off       %取消警告
+feature jit off   %加速通道
+tic
+global im
+axes(handles.axes2);
+J1=mirror(im,1);
+imshow(J1);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+
+
+
+function OutImage=mirror(InImage,n)
+%mirror函数实现图像镜像变换功能
+%参数n为1时，实现水平镜像变换
+%参数n为2时，实现垂直镜像变换
+%参数n为3时，实现水平垂直镜像变换
+I=InImage;
+[M,N,G]=size(I);%获取输入图像I的大小
+J=I;  %初始化新图像矩阵全为1，大小与输入图像相
+if (n==1)
+    for i=1:M
+        for j=1:N
+            J(i,j,:)=I(M-i+1,j,:);%n=1,水平镜像
+        end
+    end;
+elseif (n==2)
+     for i=1:M
+        for j=1:N
+            J(i,j,:)=I(i,N-j+1,:);%n=2,垂直镜像
+        end
+     end    
+elseif (n==3)
+     for i=1:M
+        for j=1:N
+            J(i,j,:)=I(M-i+1,N-j+1,:);%n=3,水平垂直镜像
+        end
+     end
+else
+    error('参数n输入不正确，n取值1、2、3')%n输入错误时提示
+end
+    OutImage=J;
+
+    
+
+% --------------------------------------------------------------------
+function Untitled_33_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_33 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%垂直镜像
+warning off       %取消警告
+feature jit off   %加速通道
+tic
+global im
+axes(handles.axes2);
+J1=mirror(im,2);
+imshow(J1);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+% --------------------------------------------------------------------
+function Untitled_34_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_34 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%水平垂直镜像
+warning off       %取消警告
+feature jit off   %加速通道
+tic
+global im
+axes(handles.axes2);
+J1=mirror(im,3);
+imshow(J1);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+
+% --------------------------------------------------------------------
+function Untitled_35_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_35 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --------------------------------------------------------------------
+function Untitled_36_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_36 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --------------------------------------------------------------------
+function Untitled_37_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_37 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --------------------------------------------------------------------
+function Untitled_38_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_38 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --------------------------------------------------------------------
+function Untitled_43_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_43 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%高斯低通滤波器
+warning off       %取消警告
+feature jit off   %加速通道
+global im
+tic
+axes(handles.axes2);
+I=im2double(im);
+M=2*size(I,1);%滤波器行数
+N=2*size(I,2);%滤波器列数
+u=-M/2:(M/2-1);
+v=-N/2:(N/2-1);
+[U,V]=meshgrid(u,v);
+D=sqrt(U.^2+V.^2);
+addition=inputdlg('低通值：','低通滤波器');
+addition2=cell2mat(addition);%addition数值为元胞，转化为文字
+addition3=str2num(addition2);%addition2数值为文字，转化为数值
+D0=addition3(1,1);%输入标
+D0=80;%低通截止频率为80
+H=double(D<=D0);%理想低通滤波器
+J=fftshift(fft2(I,size(H,1),size(H,2)));%时域图像转换到频域
+K=J.*H;%滤波处理
+L=ifft2(ifftshift(K));%傅里叶反变换
+L=L(1:size(I,1),1:size(I,2));
+imshow(L);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+% --------------------------------------------------------------------
+function Untitled_44_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_44 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%巴特沃斯高通滤波器
+warning off       %取消警告
+feature jit off   %加速通道
+global im
+tic
+axes(handles.axes2);
+I=im2double(im);
+M=2*size(I,1);%滤波器行数
+N=2*size(I,2);%滤波器列数
+u=-M/2:(M/2-1);
+v=-N/2:(N/2-1);
+[U,V]=meshgrid(u,v);
+D=sqrt(U.^2+V.^2);
+addition=inputdlg('高通值：','高通滤波器');
+addition2=cell2mat(addition);%addition数值为元胞，转化为文字
+addition3=str2num(addition2);%addition2数值为文字，转化为数值
+D0=addition3(1,1);%输入值
+D0=50;%截止频率为50
+n=6;%巴特沃斯滤波器的阶数
+H=1./(1+(D0./D).^(2*n));%设计滤波器
+J=fftshift(fft2(I,size(H,1),size(H,2)));%时域图像转化为频域
+K=J.*H;%滤波
+L=ifft2(ifftshift(K));%频域图像转化为时域
+L=L(1:size(I,1),1:size(I,2));%调整大小
+imshow(L);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+% --------------------------------------------------------------------
+function Untitled_45_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_45 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%带阻滤波器
+warning off       %取消警告
+feature jit off   %加速通道
+global im
+tic
+axes(handles.axes2);
+I=im2double(im);
+M=2*size(I,1);
+N=2*size(I,2);
+u=-M/2:(M/2-1);
+v=-N/2:(N/2-1);
+[U,V]=meshgrid(u, v);
+D=sqrt(U.^2+V.^2);
+D0=50;
+W=30;
+H=double(or(D<(D0-W/2), D>D0+W/2));
+J=fftshift(fft2(I, size(H, 1), size(H, 2))); 
+K=J.*H;
+L=ifft2(ifftshift(K));
+L=L(1:size(I,1), 1:size(I, 2));
+imshow(L);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+
+
+
+% --------------------------------------------------------------------
+function Untitled_41_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_41 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --------------------------------------------------------------------
+function Untitled_42_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_42 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --------------------------------------------------------------------
+function Untitled_39_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_39 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%灰度变换增强图像
+warning off       %取消警告
+feature jit off   %加速通道
+tic
+global im
+axes(handles.axes2);
+I=rgb2gray(im);
+M=stretchlim(I);%获取最佳区间
+J=imadjust(I,M,[]);%调整灰度范围
+imshow(J);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+
+
+% --------------------------------------------------------------------
+function Untitled_40_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_40 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%直方图增强（直方图规定化）
+warning off       %取消警告
+feature jit off   %加速通道
+tic
+global im
+axes(handles.axes2);
+I=rgb2gray(im);
+hgram=ones(1,256);
+J=histeq(I,hgram);
+imshow(uint8(J));
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+
+% --------------------------------------------------------------------
+function Untitled_47_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_47 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%线性滤波（默认：平滑滤波器）
+warning off       %取消警告
+feature jit off   %加速通道
+global im
+tic
+axes(handles.axes2);
+I=im;
+h=fspecial('average',3);%采用3*3平均模板
+I2=imfilter(I,h,'corr','replicate');%平滑滤波
+imshow(I2);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+
+% --------------------------------------------------------------------
+function Untitled_48_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_48 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%中值滤波器
+warning off       %取消警告
+feature jit off   %加速通道
+global im
+tic
+axes(handles.axes2);
+R=medfilt2(im(:,:,1));%%红，中值滤波器，模板大小3*3
+G=medfilt2(im(:,:,2));%%绿，中值滤波器，模板大小3*3
+B=medfilt2(im(:,:,3));%%蓝，中值滤波器，模板大小3*3
+K1(:,:,1)=R;
+K1(:,:,2)=G;
+K1(:,:,3)=B;
+imshow(K1);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+% --------------------------------------------------------------------
+function Untitled_49_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_49 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%排序波器
+warning off       %取消警告
+feature jit off   %加速通道
+global im
+tic
+axes(handles.axes2);
+R=ordfilt2(im(:,:,1),1,true(3));
+G=ordfilt2(im(:,:,2),1,true(3));
+B=ordfilt2(im(:,:,3),1,true(3));
+K1(:,:,1)=R;
+K1(:,:,2)=G;
+K1(:,:,3)=B;
+imshow(K1);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+
+
+
+
+
+% --------------------------------------------------------------------
+function Untitled_50_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_50 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%自适应滤波-维纳滤波
+warning off       %取消警告
+feature jit off   %加速通道
+global im
+tic
+axes(handles.axes2);
+[R,noise1]=wiener2(im(:,:,1));%%红，维纳滤波窗口3*3，返回值noise为噪声的能量
+[G,noise2]=wiener2(im(:,:,2));%%绿，维纳滤波窗口3*3，返回值noise为噪声的能量
+[B,noise3]=wiener2(im(:,:,3));%%蓝，维纳滤波窗口3*3，返回值noise为噪声的能量
+W(:,:,1)=R;
+W(:,:,2)=G;
+W(:,:,3)=B;
+imshow(W);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+
+% --------------------------------------------------------------------
+function Untitled_51_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_51 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --------------------------------------------------------------------
+function Untitled_63_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_63 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --------------------------------------------------------------------
+function Untitled_71_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_71 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --------------------------------------------------------------------
+function Untitled_77_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_77 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --------------------------------------------------------------------
+function Untitled_82_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_82 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --------------------------------------------------------------------
+function Untitled_83_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_83 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%定位几何中心
+warning off       %取消警告
+feature jit off   %加速通道
+global im
+tic
+axes(handles.axes2);
+I = im;
+[a,b,c]=size(I);
+for i=1:a
+    for j=1:b        
+        R=I(i,j,1);
+        G=I(i,j,2);
+        B=I(i,j,3);
+       if R>(G.*2)
+           I(i,j)=I(i,j);
+       else
+        I(i,j,1)=255;
+        I(i,j,2)=255;
+        I(i,j,3)=255;
+       end
+    end
+end
+bw1=im2bw(I);
+bw2=~bw1;
+[L num] = bwlabel(bw2);
+for i=1:num
+   if numel(find(L==i)) < 1000
+       bw2(L==i) =0;
+   end
+end 
+bw3=~bw2;
+[L1 num1] = bwlabel(bw3);
+for j=1:num1
+   if numel(find(L1==j)) <3000
+       bw3(L1==j) =0;
+   end
+end 
+[height,width]=size(bw3);
+for i=1:height %%循环中进行反色
+for j=1:width
+    if bw3(i,j)==1
+        bw3(i,j)=0;
+    else bw3(i,j)=1;
+    end 
+end
+end
+[L,num]=bwlabel(bw3,8);
+plot_x=zeros(1,num);%%用于记录质心位置的坐标
+plot_y=zeros(1,num);
+for k=1:num  %%num个区域依次统计质心位置
+    sum_x=0;sum_y=0;area=0;
+    for i=1:height
+    for j=1:width
+       if L(i,j)==k
+        sum_x=sum_x+i;
+        sum_y=sum_y+j;
+        area=area+1;   
+       end
+    end
+    end
+    plot_x(k)=fix(sum_x/area);
+    plot_y(k)=fix(sum_y/area);
+end
+for i=1:num
+    imshow(bw3);
+hold on
+plot(plot_y(i) ,plot_x(i), '*');
+end
+ hold off
+y=plot_x;
+x=plot_y;
+str=[ '横坐标：',num2str(x),'纵坐标：' num2str(y)];
+helpdlg(str,'识别圆心');
+toc
+time=toc;
+data=strcat({'横坐标：'},{num2str(x)},{'纵坐标：'},{num2str(y)});
+set(handles.edit10,'string',time);
+set(handles.edit4,'string',data);
+text={'横坐标',x,'纵坐标',y};
+% setappdata(handles.edit4,'avg',text); 
+xlswrite('圆心坐标.xlsx',text,'A1');
+% avg=[x y];
+% setappdata(handles.edit4,'avg',text); 
+
+
+
+
+
+
+
+
+
+
+% --------------------------------------------------------------------
+function Untitled_84_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_84 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+
+
+% --------------------------------------------------------------------
+function Untitled_86_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_86 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%圆形识别
+warning off       %取消警告
+feature jit off   %加速通道
+global im
+tic
+axes(handles.axes2);
+circleParaXYR=[];  
+I = im;  
+[m,n,l] = size(I);  
+if l>1  
+ I = rgb2gray(I);  
+end  
+BW = edge(I,'sobel');    
+step_r = 1;  
+step_angle = 0.1;  
+minr=3; 
+maxr=30;  
+thresh=0.51;  
+[hough_space,hough_circle,para] = hough_circlefu(BW,step_r,step_angle,minr,maxr,thresh);     
+circleParaXYR=para;      
+%输出  
+fprintf(1,'\n---------------圆统计----------------\n');  
+[r,c]=size(circleParaXYR);%r=size(circleParaXYR,1);  
+fprintf(1,'  检测出%d个圆\n',r);%圆的个数  
+fprintf(1,'  圆心     半径\n');%圆的个数  
+for n=1:r  
+fprintf(1,'%d （%d，%d）  %d\n',n,floor(circleParaXYR(n,1)),floor(circleParaXYR(n,2)),floor(circleParaXYR(n,3)));  
+end     
+%标出圆  
+imshow(I); 
+hold on;  
+plot(circleParaXYR(:,2), circleParaXYR(:,1), 'r+');  
+for k = 1 : size(circleParaXYR, 1)  
+t=0:0.01*pi:2*pi;  
+x=cos(t).*circleParaXYR(k,3)+circleParaXYR(k,2);y=sin(t).*circleParaXYR(k,3)+circleParaXYR(k,1);  
+plot(x,y,'r-');  
+end       
+R_max=maxr;  
+acu=zeros(R_max);  
+stor =[];  
+for j=1:R_max  
+  for n=1:r  
+   if  j == floor(circleParaXYR(n,3))  
+           acu(j)= acu(j)+1;  
+    end  
+  end  
+stor=[stor;j,acu(j)];  
+end  
+    for j=1:R_max  
+      if acu(j) > 0  
+       fprintf(1,'%4d %8d\n',stor(j,1),stor(j,2));  
+      end  
+    end  
+      
+    fprintf(1,'----------------------------------------\n');  
+hold off;
+str=[ '圆形目标数目：',num2str(n)];
+helpdlg(str,'圆形识别');
+% datas=para;
+% set(handles.table1,datas);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+
+
+data=strcat({'圆形目标数目：'},{num2str(n)});
+set(handles.edit4,'string',data);
+text1={'圆形目标数目：',n};
+% xlswrite('圆形目标数目.xlsx',text1,'A1');
+
+
+
+
+
+
+
+
+
+% --------------------------------------------------------------------
+function Untitled_87_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_87 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%识别车牌
+warning off       %取消警告
+feature jit off   %加速通道
+global im
+tic
+axes(handles.axes2);
+tu=im;
+tu1=caijian(tu);%将车牌区域分离出来
+[y,x]=size(tu1);  
+num=round((y*x)/150);  %取车牌区域面积1/150的值
+tu2=qiege(tu1);   %将车牌区域切割一下（舍去掉上下左右多余的地方）以便下一步方便
+[word1, tu3]=fenli_left(tu2);  %裁剪出左边第一个字符（中文字符）
+% subplot(2,2,4);imshow(tu3);
+tu4=medfilt2(tu3,[3 3]);     %中值滤波
+tu5=bwareaopen(tu4,num,8);   %去掉面积少于1/150车牌区域的不连通区域（过滤掉例如第二位与第三位字符中间的点以及大型杂点）
+tu6=medfilt2(tu5,[3 3]);     %再次滤波（可省略）
+[word2,word3,word4,word5,word6,word7]=fenli(tu6); %将剩下的车牌区域进行裁剪，输出是剩余六个字符区域
+str=shibie_cnn(word1,word2,word3,word4,word5,word6,word7); %将七个裁剪下来的字符区域进行神经网络识别，得出结果
+helpdlg(str,'车牌号');
+hold off;
+toc
+time=toc;
+set(handles.edit10,'string',time);
+data=strcat({'车牌号：'},{str});
+set(handles.edit10,'string',time);
+set(handles.edit4,'string',data);
+text={'车牌号：',str};
+% xlswrite('车牌识别.xlsx',text,'A1');
+
+
+
+
+
+% --------------------------------------------------------------------
+function Untitled_88_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_88 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --------------------------------------------------------------------
+function Untitled_78_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_78 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%膨胀操作
+warning off       %取消警告
+feature jit off   %加速通道
+global im
+tic
+axes(handles.axes2);
+BW=im2bw(im);
+addition=inputdlg('膨胀结构元素值：','膨胀');
+addition2=cell2mat(addition);%addition数值为元胞，转化为文字
+addition3=str2num(addition2);%addition2数值为文字，转化为数值
+b=addition3(1,1);%输入值
+se=strel('disk',b);%结构元素为圆形，大小为2
+bw2=imdilate(BW,se);%膨胀操作
+imshow(bw2);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+% --------------------------------------------------------------------
+function Untitled_79_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_79 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%腐蚀操作
+warning off       %取消警告
+feature jit off   %加速通道
+global im
+tic
+axes(handles.axes2);
+BW=im2bw(im);
+addition=inputdlg('腐蚀结构元素值：','腐蚀');
+addition2=cell2mat(addition);%addition数值为元胞，转化为文字
+addition3=str2num(addition2);%addition2数值为文字，转化为数值
+b=addition3(1,1);%输入值
+se=strel('disk',b);%结构元素为圆形，大小为2
+bw2=imerode(BW,se);%膨胀操作
+imshow(bw2);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+% --------------------------------------------------------------------
+function Untitled_80_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_80 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%开操作
+warning off       %取消警告
+feature jit off   %加速通道
+global im
+tic
+axes(handles.axes2);
+BW=im2bw(im);
+se=strel('disk',2);%结构元素为圆形，大小为2
+J=imopen(BW,se);%膨胀操作
+imshow(J);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+% --------------------------------------------------------------------
+function Untitled_81_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_81 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%闭操作
+warning off       %取消警告
+feature jit off   %加速通道
+global im
+tic
+axes(handles.axes2);
+BW=im2bw(im);
+se=strel('disk',2);%结构元素为圆形，大小为2
+J=imclose(BW,se);%膨胀操作
+imshow(J);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+
+
+% --------------------------------------------------------------------
+function Untitled_64_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_64 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --------------------------------------------------------------------
+function Untitled_65_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_65 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%傅里叶图像变换
+warning off       %取消警告
+feature jit off   %加速通道
+global im
+tic
+axes(handles.axes2);
+J=fft2(im);
+K=abs(J/256);
+imshow(uint8(K))
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+
+
+
+% --------------------------------------------------------------------
+function Untitled_68_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_68 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%Hough图像变换
+warning off       %取消警告
+feature jit off   %加速通道
+global im
+tic
+axes(handles.axes2);
+I=rgb2gray(im);
+I=im2double(I);
+BW=edge(I, 'canny');
+[H, Theta, Rho]=hough(BW, 'RhoResolution', 0.5, 'ThetaResolution', 0.5);
+set(0,'defaultFigurePosition',[100,100,1000,500]);
+set(0,'defaultFigureColor',[1 1 1])
+imshow(imadjust(mat2gray(H)));
+axis normal;
+colormap hot;
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+
+% --------------------------------------------------------------------
+function Untitled_52_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_52 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --------------------------------------------------------------------
+function Untitled_53_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_53 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --------------------------------------------------------------------
+function Untitled_54_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_54 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --------------------------------------------------------------------
+function Untitled_61_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_61 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --------------------------------------------------------------------
+function Untitled_62_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_62 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%分水岭分割
+warning off       %取消警告
+feature jit off   %加速通道
+tic
+global im
+axes(handles.axes2);
+I=im2bw(im);
+J=watershed(I,4);
+imshow(J);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+% --------------------------------------------------------------------
+function Untitled_58_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_58 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%全局阈值分割
+warning off       %取消警告
+feature jit off   %加速通道
+tic
+global im
+axes(handles.axes2);
+I=rgb2gray(im);
+% K=I*0;
+[width, height]=size(I);
+for i=1:width
+    for j=1:height
+        if (I(i, j)>50)
+            K(i, j)=1;
+        else 
+            K(i, j)=0;
+        end
+    end
+end
+imshow(K);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+
+% --------------------------------------------------------------------
+function Untitled_59_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_59 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%Otsu阈值分割
+warning off       %取消警告
+feature jit off   %加速通道
+tic
+global im
+axes(handles.axes2);
+T=graythresh(im);
+J=im2bw(im,T);
+imshow(J);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+% --------------------------------------------------------------------
+function Untitled_60_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_60 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%迭代式阈值分割
+warning off       %取消警告
+feature jit off   %加速通道
+tic
+global im
+axes(handles.axes2);
+I=im2double(im);
+T0=0.01;
+T1=(min(I(:))+max(I(:)))/2;
+r1=find(I>T1);
+r2=find(I<=T1);
+T2=(mean(I(r1))+mean(I(r2)))/2;
+while abs(T2-T1)<T0
+    T1=T2;
+    r1=find(I>T1);
+    r2=find(I<=T1);
+    T2=(mean(I(r1))+mean(I(r2)))/2;
+end
+J=im2bw(I, T2);
+imshow(J);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+
+
+
+
+
+
+
+% --------------------------------------------------------------------
+function Untitled_55_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_55 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --------------------------------------------------------------------
+function Untitled_56_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_56 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%canny算子
+warning off       %取消警告
+feature jit off   %加速通道
+global im
+tic
+axes(handles.axes2);
+BW=im2bw(im);
+BW2=edge(BW,'canny');
+imshow(BW2);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+% --------------------------------------------------------------------
+function Untitled_57_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_57 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%Laplacian、Gauss算子
+warning off       %取消警告
+feature jit off   %加速通道
+global im
+tic
+axes(handles.axes2);
+BW=im2bw(im);
+BW2=edge(BW,'log');
+imshow(BW2);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+% --------------------------------------------------------------------
+function Untitled_89_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_89 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%Roberts算子
+warning off       %取消警告
+feature jit off   %加速通道
+global im
+tic
+axes(handles.axes2);
+BW=im2bw(im);
+BW2=edge(BW,'roberts');
+imshow(BW2);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+% --------------------------------------------------------------------
+function Untitled_90_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_90 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%prewitt算子
+warning off       %取消警告
+feature jit off   %加速通道
+global im
+tic
+axes(handles.axes2);
+BW=im2bw(im);
+BW2=edge(BW,'prewitt');
+imshow(BW2);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+% --------------------------------------------------------------------
+function Untitled_91_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_91 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%Sobel算子
+warning off       %取消警告
+feature jit off   %加速通道
+global im
+tic
+axes(handles.axes2);
+BW=im2bw(im);
+BW2=edge(BW,'sobel');
+imshow(BW2);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+
+% --------------------------------------------------------------------
+function Untitled_92_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_92 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%Radon正变换
+warning off       %取消警告
+feature jit off   %加速通道
+global im
+tic
+axes(handles.axes2);
+BW=im2bw(im);
+addition=inputdlg('请输入角度：','Radon变换');
+addition2=cell2mat(addition);%addition数值为元胞，转化为文字
+addition3=str2num(addition2);%addition2数值为文字，转化为数值
+b=addition3(1,1);%输入值
+b=0:10:180;
+[R,xp]=radon(BW,b);
+imagesc(b,xp,R);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+% --% imshow(J);------------------------------------------------------------------
+function Untitled_93_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_93 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%Radon反变换
+warning off       %取消警告
+feature jit off   %加速通道
+global im
+tic
+axes(handles.axes2);
+BW=im2bw(im);
+addition=inputdlg('请输入角度：','Radon变换');
+addition2=cell2mat(addition);%addition数值为元胞，转化为文字
+addition3=str2num(addition2);%addition2数值为文字，转化为数值
+b=addition3(1,1);%输入值
+[R,xp]=iradon(BW,b);
+imagesc(b,xp,R);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+
+% --------------------------------------------------------------------
+function Untitled_94_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_94 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%灰度直方图
+warning off       %取消警告
+feature jit off   %加速通道
+global im
+tic
+axes(handles.axes2);
+I=rgb2gray(im);
+imhist(I);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+
+% --------------------------------------------------------------------
+function Untitled_95_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_95 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%伽玛变换
+warning off       %取消警告
+feature jit off   %加速通道
+global im
+tic
+axes(handles.axes2);
+addition=inputdlg('伽玛值：','伽玛值');
+addition2=cell2mat(addition);%addition数值为元胞，转化为文字
+addition3=str2num(addition2);%addition2数值为文字，转化为数值
+b=addition3(1,1);%输入值
+R=imadjust(im(:,:,1),[],[],b);
+G=imadjust(im(:,:,2),[],[],b);
+B=imadjust(im(:,:,3),[],[],b);
+K1(:,:,1)=R;
+K1(:,:,2)=G;
+K1(:,:,3)=B;
+imshow(K1);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+% --------------------------------------------------------------------
+function Untitled_85_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_85 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%最小外接矩形（按照边长计算）
+warning off       %取消警告
+feature jit off   %加速通道
+global im
+tic
+axes(handles.axes2);
+RGB =im;
+I = rgb2gray(RGB);
+threshold = graythresh(I);
+bw = im2bw(I,threshold);
+% remove all object containing fewer than 30 pixels
+bw = bwareaopen(bw,30);
+% fill a gap in the pen's cap
+se = strel('disk',2);
+bw = imclose(bw,se);
+% fill any holes, so that regionprops can be used to estimate
+% the area enclosed by each of the boundaries
+bw = imfill(bw,'holes');
+ed=edge(bw);
+imshow(ed)
+%以上是图像二值化 上面制作二值化图像
+L = bwlabel(bw);
+L1 = bwlabel(ed);
+Ar=zeros(1,max(L(:)));
+perimeter=zeros(1,max(L1(:)));
+metric=zeros(1,max(L1(:)));
+Pwl=zeros(1,max(L1(:)));
+Pr=zeros(1,max(L1(:)));
+for i=1:max(L(:))
+Ar(i)=sum(bw(L==i));
+perimeter(i)=sum(ed(L==i));
+metric(i) = 4*pi*Ar(i)/perimeter(i)^2;
+[r,c]=find(L==i);
+% 'a'是按面积算的最小矩形，如果按边长用'p'
+[rectx,recty,area,perimeter] = minboundrect(c,r,'p'); 
+hold on
+line(rectx,recty);
+end
+hold off
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+
+% --------------------------------------------------------------------
+function Untitled_96_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_96 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%目标区域计数(以数米粒为例)
+warning off       %取消警告
+feature jit off   %加速通道
+global im
+tic
+axes(handles.axes2);
+g=im;
+SE=strel('disk',4);  % 形态结构元素
+X1=imerode(g,SE);  % 二值图像腐蚀
+I=imdilate(X1,SE); % 二值图像膨胀
+BG=imopen(I,strel('disk',10));
+I2=imsubtract(I,BG);    % 减法运算 从一个图像中减去另一个图像或从图像中减去常量
+level=graythresh(I2);   % 灰谷 基于otsu方法的全局图像阈值
+bw2=imbinarize(I2,level);  % 基于阈值将图像转换为二值图像
+[labeled,numObjects]=bwlabel(bw2,8);
+max(max(labeled))
+f=bw2;
+[L,n]= bwlabel(f);  
+[r,c]=find(L==3);   % 然后，利用r和C作为输入的mean函数来计算该对象的质心。
+rbar = mean(r);
+cbar = mean(c);   
+    % 可以使用一个循环来计算和显示图像中全部对象的质心。
+    % 为了使质心叠置在图像上时可看到该质心，我们将使用中心为白色“*”符号的黑色圆标记来表示，如下所示：
+imshow(f);
+hold on    % So later plotting commands plot on top of the image.
+    for k = 1:n
+        [r,c]= find(L == k);
+        rbar = mean(r);
+        cbar = mean(c);
+        plot(cbar,rbar,'Marker','o','MarkerEdgeColor','k','MarkeRFaceColor','k','MarkerSize',10);
+        plot(cbar,rbar,'Marker','*','MarkerEdgeColor','w');     % 标注*
+       end
+    hold on    % So later plotting commands plot on top of the image.
+    for k = 1:n
+        [r,c]= find(L == k);
+        rbar = mean(r);
+        cbar = mean(c);
+        plot(cbar,rbar,'Marker','o','MarkerEdgeColor','k','MarkerFaceColor','k','MarkerSize',10);
+        plot(cbar,rbar,'Marker','*','MarkerEdgeColor','w');     % 标注*
+        text(cbar,rbar,num2str(k),'Color','red','FontSize',14); % 标注标号
+    end
+    hold on    % So later plotting commands plot on top of the image.
+    for k = 1:n
+        [r,c]= find(L == k);
+        rbar = mean(r);
+        cbar = mean(c);
+        plot(cbar,rbar,'Marker','o','MarkerEdgeColor','k','MarkerFaceColor','k','MarkerSize',10);
+        plot(cbar,rbar,'Marker','*','MarkerEdgeColor','w');     % 标注*
+        text(cbar,rbar,num2str(k),'Color','red','FontSize',14); % 标注标号
+    end
+    hold off;
+toc
+time=toc;
+set(handles.edit10,'string',time);
+str=['目标区域数目：' num2str(n)];
+helpdlg(str,'区域计数');
+data=strcat({'目标区域数目：'},{num2str(n)});
+set(handles.edit4,'string',data);
+text1={'目标区域数目：',n};
+% xlswrite('目标区域数目.xlsx',text1,'A1');
+
+
+
+
+
+
+% data=strcat({'目标区域数目：'},n);
+% set(handles.edit10,'string',time);
+% set(handles.edit4,'string',data);
+% text={'目标区域数目：',str};
+% xlswrite('目标区域数目.xlsx',text,'A1');
+
+
+
+
+
+
+
+
+
+function edit3_Callback(hObject, eventdata, handles)
+% hObject    handle to edit3 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit3 as text
+%        str2double(get(hObject,'String')) returns contents of edit3 as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function edit3_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit3 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes when entered data in editable cell(s) in table1.
+function table1_CellEditCallback(hObject, eventdata, handles)
+% hObject    handle to table1 (see GCBO)
+% eventdata  structure with the following fields (see MATLAB.UI.CONTROL.TABLE)
+%	Indices: row and column indices of the cell(s) edited
+%	PreviousData: previous data for the cell(s) edited
+%	EditData: string(s) entered by the user
+%	NewData: EditData or its converted form set on the Data property. Empty if Data was not changed
+%	Error: error string when failed to convert EditData to appropriate value for Data
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --------------------------------------------------------------------
+function Untitled_97_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_97 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --------------------------------------------------------------------
+function Untitled_98_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_98 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% % --------------------------------------------------------------------
+function Untitled_99_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_99 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%监控与拍照
+% warning off       %取消警告
+% feature jit off   %加速通道
+% global im
+% tic
+% axes(handles.axes2);
+% %获得设备信息
+% global obj
+% % load ans.mat；
+% % load obj.mat；
+% imaqhwinfo
+% % obj=imaq.VideoDevice('winvideo',1,'YUY2_640x480');
+% global obj
+% obj = videoinput('winvideo');
+% set(obj, 'FramesPerTrigger', 1);
+% set(obj, 'TriggerRepeat', Inf);
+% %定义一个监控界面
+% hf = figure('Units', 'Normalized', 'Menubar', 'None','NumberTitle', 'off', 'Name', '实时拍照系统');
+% ha = axes('Parent', hf, 'Units', 'Normalized', 'Position', [0.05 0.2 0.85 0.7]);
+% axis off
+% %定义两个按钮控件
+% hb1 = uicontrol('Parent', hf, 'Units', 'Normalized','Position', [0.25 0.05 0.2 0.1], 'String', '预览', 'Callback', ['objRes = get(obj, ''VideoResolution'');' ...
+%      'nBands = get(obj, ''NumberOfBands'');' ...
+%      'hImage = image(zeros(objRes(2), objRes(1), nBands));' ...
+%      'preview(obj, hImage);']);
+% hb2 = uicontrol('Parent', hf, 'Units', 'Normalized','Position', [0.55 0.05 0.2 0.1], 'String', '拍照', 'Callback', 'imwrite(getsnapshot(obj), ''im.jpg'')');
+Camera_GUI
+
+
+
+
+
+
+
+% % --------------------------------------------------------------------
+% function Untitled_100_Callback(hObject, eventdata, handles)
+% % hObject    handle to Untitled_100 (see GCBO)
+% % eventdata  reserved - to be defined in a future version of MATLAB
+% % handles    structure with handles and user data (see GUIDATA)
+% %人脸追踪
+% warning off       %取消警告
+% feature jit off   %加速通道
+% global im
+% tic
+% axes(handles.axes2);
+% vid=imaq.VideoDevice('winvideo',1,'YUY2_640x480');
+% set(vid,'ReturnedColorSpace','rgb');
+% boxInserter=vision.ShapeInserter('BorderColor','Custom','CustomBorderColor',[255 255 0]);
+% videoPlayer=vision.VideoPlayer();
+% faceDetector=vision.CascadeObjectDetector();
+% 
+% 
+% 
+% for i=1:3000000
+%     videoFrame=step(vid);
+%     bbox=step(faceDetector,videoFrame);
+%     videoFrame=insertShape(videoFrame,'Rectangle',bbox);
+%     videoOut=step(boxInserter,videoFrame,bbox);
+%     step(videoPlayer,videoOut);
+% end
+% button=questdlg('你确定退出吗？','退出程序','Yes','No','Yes');%内容，标题，选项，默认选项
+% if strcmp(button,'Yes')
+% %       delete(hObject);
+% clc;
+% clear;
+% 
+%  end
+
+
+% --- Executes when user attempts to close figure1.
+function figure1_CloseRequestFcn(hObject, eventdata, handles)
+% hObject    handle to figure1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+% Hint: delete(hObject) closes the figure
+% delete(hObject);
+button=questdlg('你确定退出吗？','退出程序','Yes','No','Yes');%内容，标题，选项，默认选项
+if strcmp(button,'Yes')
+      delete(hObject);
+      clc;
+      clear;
+end
+
+
+% --------------------------------------------------------------------
+function Untitled_101_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_101 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%%  保存数据
+data=getappdata(handles.edit4,'avg');%获得数值数据
+data = num2str(data);%数字转成字符串
+[FileName PathName]=uiputfile({
+    '*.txt','Txt Files(*.txt)';'*.*','All Files(*.*)'},'choose a File');%pathname获取保存数据路径，filename获取保存数据名称
+str= [PathName FileName]
+% set(handles.edit10,'string',str);
+% m=get(handles.displayArea,'String')
+fid = fopen(char(str), 'w');
+fwrite(fid, '', 'integer*4')
+% strRec = ['data',','];
+fprintf(fid,'%s',data);
+% fprintf(fid,'%s',data);
+fclose(fid)
+
+
+
+
+
+
+% --------------------------------------------------------------------
+function Untitled_102_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_102 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --------------------------------------------------------------------
+function Untitled_103_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_103 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%RGB图转二值图（默认）
+warning off       %取消警告
+feature jit off   %加速通道
+tic
+global im
+axes(handles.axes2);
+BW=im2bw(im);
+imshow(BW);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+
+% --------------------------------------------------------------------
+function Untitled_104_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_104 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --------------------------------------------------------------------
+function Untitled_105_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_105 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%RGB图转索引图（默认）
+warning off       %取消警告
+feature jit off   %加速通道
+tic
+global im
+axes(handles.axes2);
+[X1,map1]=rgb2ind(im,64);%将RGB图像转化为索引图像，颜色种类N至少64种
+imshow(X1);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+
+% --------------------------------------------------------------------
+function Untitled_107_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_107 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --------------------------------------------------------------------
+function Untitled_108_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_108 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%RGB图转灰度图
+warning off       %取消警告
+feature jit off   %加速通道
+tic
+global im
+axes(handles.axes2);
+I=rgb2gray(im);
+imshow(I);
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+
+% --------------------------------------------------------------------
+function Untitled_109_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_109 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --------------------------------------------------------------------
+function Untitled_111_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_111 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --------------------------------------------------------------------
+function Untitled_110_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_110 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%最小外接矩形（按照面积计算）
+warning off       %取消警告
+feature jit off   %加速通道
+global im
+tic
+axes(handles.axes2);
+RGB =im;
+I = rgb2gray(RGB);
+threshold = graythresh(I);
+bw = im2bw(I,threshold);
+% remove all object containing fewer than 30 pixels
+bw = bwareaopen(bw,30);
+% fill a gap in the pen's cap
+se = strel('disk',2);
+bw = imclose(bw,se);
+% fill any holes, so that regionprops can be used to estimate
+% the area enclosed by each of the boundaries
+bw = imfill(bw,'holes');
+ed=edge(bw);
+imshow(ed)
+%以上是图像二值化 上面制作二值化图像
+L = bwlabel(bw);
+L1 = bwlabel(ed);
+Ar=zeros(1,max(L(:)));
+perimeter=zeros(1,max(L1(:)));
+metric=zeros(1,max(L1(:)));
+Pwl=zeros(1,max(L1(:)));
+Pr=zeros(1,max(L1(:)));
+for i=1:max(L(:))
+Ar(i)=sum(bw(L==i));
+perimeter(i)=sum(ed(L==i));
+metric(i) = 4*pi*Ar(i)/perimeter(i)^2;
+[r,c]=find(L==i);
+% 'a'是按面积算的最小矩形，如果按边长用'p'
+[rectx,recty,area,perimeter] = minboundrect(c,r,'a'); 
+hold on
+line(rectx,recty);
+end
+hold off
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+
+
+function edit10_Callback(hObject, eventdata, handles)
+% hObject    handle to edit10 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit10 as text
+%        str2double(get(hObject,'String')) returns contents of edit10 as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function edit10_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit10 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --------------------------------------------------------------------
+function Untitled_112_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_112 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+record_video
+
+
+% --- Executes during object creation, after setting all properties.
+function axes5_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to axes5 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: place code in OpeningFcn to populate axes5
+
+% function untitled1_OpeningFcn(hObject,eventdata,handles,varargin)
+% handles.output=hObject;
+% tu_biao=importdata('保存.png');%将33.jpg改成你要添加的图标的名称
+% set(handles.pushbutton1,'CDATA',tu_biao);
+% guidata(hObject,handles)
+
+
+
+
+% --- Executes on button press in pushbutton1.
+function pushbutton1_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% % handles    structure with handles and user data (see GUIDATA)
+% tu_biao=importdata('保存.png');%将33.jpg改成你要添加的图标的名称
+% set(handles.pushbutton1,'CDATA',tu_biao);
+[FileName,PathName] = uiputfile({'*.jpg','JPEG(*.jpg)';...  
+                                 '*.bmp','Bitmap(*.bmp)';...  
+                                 '*.gif','GIF(*.gif)';...  
+                                 '*.*',  'All Files (*.*)'},...  
+                                 'Save Picture','Untitled');  
+if FileName==0  
+    return;  
+else  
+    h=getframe(handles.axes2);   
+    imwrite(h.cdata,[PathName,FileName]);  
+end
+
+
+% --- Executes on button press in pushbutton3.
+function pushbutton3_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton3 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%打开图片
+global im;
+axes(handles.axes1);  
+[filename,pathname]=uigetfile({'*.bmp;*.jpg;*.png;*.jpeg;*.tif'},...
+                'Pick an image',...
+                'D:\matlab\bin\matlab work');  
+str=[pathname filename];  
+if isequal(filename,0)||isequal(pathname,0)  
+    warndlg('Please select a picture first!','Warning');  
+    return;  
+else  
+    im = imread(str); 
+    imshow(im);    
+end
+axes(handles.axes1);%用axes命令设定当前操作的坐标轴是axes1
+fpath=[pathname filename];%将文件名和目录名组合成一个完整的路径
+imshow(imread(fpath));
+
+
+% --------------------------------------------------------------------
+function Untitled_113_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_113 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%ROI区域选取
+warning off       %取消警告
+feature jit off   %加速通道
+global im
+tic
+% [x,y,c]=ginput(2);
+% if c==1
+% BB=imcrop(im,[min(x(1),x(2)),min(y(1),y(2)),abs(x(2)-x(1)),abs(y(2)-y(1))]);
+im1=imcrop();
+axes(handles.axes2);
+imshow(im1)
+% axes(handles.axes2); %你的截图放在GUI中的axes2中
+% end
+% imshow(BB)
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+% --------------------------------------------------------------------
+function Untitled_114_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_114 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+warning off       %取消警告
+feature jit off   %加速通道
+global im
+tic
+% img = imread('11.jpg');
+p=size(im,3);
+if p==3
+r=im(:,:,1);
+g=im(:,:,2);
+b=im(:,:,3);
+I1=rgb2gray(im);
+else
+    I1=im;
+end
+hold on
+[x,y,c]=ginput(1);
+m(1)=x;
+n(1)=y;
+plot(x,y,'r');
+k=2;
+while(c==1)
+    [x1,y1,c1]=ginput(1);
+    if c1==1
+    m(k)=x1;
+    n(k)=y1;
+    plot(x,y,'r');
+    line([m(k-1) m(k)],[n(k-1) n(k)]);
+    k=k+1;
+    c=c1;
+    else
+        break
+    end
+end
+line([m(k-1) m(1)],[n(k-1) n(1)]);
+BW = roipoly(I1,m,n); 
+if p==3
+    r1=double(r).*double(BW);
+    g1=double(g).*double(BW);
+    b1=double(b).*double(BW);
+    i1=cat(3,r1,g1,b1);
+%     figure
+%     imshow(mat2gray(i1));
+% else 
+%     i2=double(I1).*double(BW);
+% %     figure
+%     imshow(mat2gray(i2));
+end
+% im1=imcrop();
+
+axes(handles.axes2);
+imshow(mat2gray(i1))
+hold off
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+
+% --------------------------------------------------------------------
+function Untitled_115_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_115 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+warning off       %取消警告
+feature jit off   %加速通道
+global im
+tic
+axes(handles.axes2);
+ii = 1;
+% Add path
+addpath(genpath('Image\'));
+addpath(genpath('C:\Users\Administrator\Desktop\图像处理系统APP开发\能量泛函lbf\Multi_LBF solver\'));
+% save result path
+SaveFilePath = 'Results\';
+
+% Read Image
+c0 = 2;
+imgID = 6;
+
+Img = im;
+Temp = Img;
+
+if ndims(Img) == 3
+    Img = rgb2gray(Img);
+end
+Img = double(Img);
+% Initial phi is the level set function
+switch imgID
+    case 1
+        phi= ones(size(Img(:,:,1))).*c0;
+        a=43;b=51;c=20;d=28;
+        phi(a:b,c:d) = -c0;
+        figure;
+        imshow(Temp);colormap;
+        hold on;
+        [c,h] = contour(phi, 0, 'r');
+        hold off;
+    case 2
+        [m,n] = size(Img(:,:,1));
+        a=m/2; b=n/2; r=min(m,n)/4;%set the radius
+        phi= ones(m,n).*c0;
+        phi(a-r:a+r,b-r:b+r) = -c0;
+        imshow(Temp);colormap;
+        hold on;
+        [c,h] = contour(phi, 0, 'r');
+        hold off;
+    case 3
+        figure;
+        imshow(Temp);colormap;
+        text(6,6,'Left click to get points, right click to get end point','FontSize',12,'Color', 'g');
+        BW=roipoly;     %BW is mask
+        phi=c0*2*(0.5-BW);
+        hold on;
+        [c,h] = contour(phi,[0 0],'r');
+        hold off;
+    case 4
+        figure;
+        imshow(Temp);colormap;
+        rNum = 1;% the cicle number in a row
+        cNum = 1;% the cicle number in a colcumn
+        [m,n] = size(Img);
+        phi= ones(m,n).*c0;
+        r = min(m/(2*rNum),n/(2*cNum))/2;
+        for i = 1:rNum
+            for j = 1:cNum
+                px = (2*i-1)*(m/(2*rNum));
+                py = (2*j-1)*(n/(2*cNum));%(px,py) is the centre of the initial zero level set cicle
+                phi(max(1,px - r):min(size(Img,1),px + r),max(1,py-r):min(size(Img,2),py+r)) = -c0; 
+            end%for j
+        end%for i
+        hold on;
+        [c,h] = contour(phi,[0 0],'r');
+        hold off;
+    case 5
+        % 产生随机位置
+        figure;
+%         imshow(Temp);
+        colormap;
+        rand('seed',0);
+        boardsize = 20; %距离边界的位置
+        
+        r = 10; %产生圆形时为半径，产生矩形时为(1/2)*边长
+        if r > boardsize
+            r = boardsize;
+        end
+        possiblex = (boardsize + 1): (size(Img,1) - boardsize);
+        possibley = (boardsize + 1): (size(Img,2) - boardsize);
+        labelx = randperm(length(possiblex));
+        labely = randperm(length(possibley));
+        centrex = possiblex(labelx(1));
+        centrey = possibley(labely(1));
+        [m,n] = size(Img);
+        phi= -ones(m,n).*c0;  
+        phi(max(1,centrey-r):min(size(Img,1),centrey+r),max(1,centrex - r):min(size(Img,2),centrex + r)) = c0;
+        hold on;
+        [c,h] = contour(phi,[0 0],'r');
+        hold off;
+    case 6
+        % 用鼠标获取中心位置
+%         figure;
+%         imshow(Temp);
+        colormap;
+%         [centrex,centrey] = ginput; % 按右键结束
+%         centrex = uint8(centrex(1));
+%         centrey = uint8(centrey(1));
+        centrex = 52; 
+        centrey = 40; 
+        boardsize = 20; %距离边界的位置
+        iscircle = 1; % 产生圆形,否则产生矩形
+        r = 10; %产生圆形时为半径，产生矩形时为(1/2)*边长
+        if r > boardsize
+            r = boardsize;
+        end
+        [m,n] = size(Img);
+        phi= ones(m,n).*c0;
+        phi(max(1,centrey-r):min(size(Img,1),centrey+r),max(1,centrex - r):min(size(Img,2),centrex + r)) = -c0;
+        hold on;
+        [c,h] = contour(phi,[0 0],'r');
+        hold off;
+end%switch imgID
+
+iterNum = 300; % the total number of the iteration
+lambda1 = 1;   % the weight parameter of the globe term which is inside the level set
+lambda2 = 1;   % the weight parameter of the globe term which is ouside the level set
+mu = 0.002*255*255; % the weight parameter of the length term
+nu = 0; % the weight parameter of the area term
+pu = 1.0; %the weight parameter of the penalizing term
+timestep = 0.1; % the time step of the level set function evolution
+epsilon = 1.0; % the parameter of the Heaviside function and the Dirac delta function
+
+
+%this part code is for the Multi_LBF model
+N = 3;
+sigmaStep = 2;
+KMlbf = cell(1,N);
+KMIG = KMlbf;
+KMONE = KMlbf;
+for n = 1:N
+    sigmaG = 3.0 + (n -1)*sigmaStep;
+    KMlbf{n} = fspecial('gaussian',round(2*sigmaG)*2+1,sigmaG);
+    KMIG{n} = conv2(Img,KMlbf{n},'same');
+    KMONE{n} = conv2(ones(size(Img)),KMlbf{n},'same');
+end %for n
+
+
+% all model's initial level set is same
+phi_Multi_LBF = phi;
+phi_star = phi;
+%
+% figure;
+% imshow(Temp); colormap;
+
+%start the level set evolution
+
+% MULTI_LBF
+time = cputime;
+for iter = 1:100
+    numIter=1;
+    phi_Multi_LBF = EVOL_LBF_Multi(phi_Multi_LBF,Img,KMlbf,KMIG,KMONE,1*mu,timestep,pu,lambda1,lambda2,epsilon,N,numIter);
+    %level set evolution.
+    if mod(iter,10) == 0
+        pause(0.001);
+        imagesc(Img, [0, 255]);colormap(gray);hold on; axis off;
+        contour(phi_Multi_LBF,[0,0],'c');
+    end
+    if mod(iter,10) == 0 
+        phi_Multi_LBF10 = phi_Multi_LBF; 
+    end
+    if mod(iter,60) == 0
+        phi_Multi_LBF60 = phi_Multi_LBF; 
+    end 
+end %for
+totaltime_Multi_LBF = cputime - time;
+
+
+
+
+
+% Display Results
+% figure;
+% imshow(Temp);
+hold on;
+contour(phi_star,[0,0],'r','linewidth',1);
+title('Initial Level set');
+
+
+% figure;
+% imshow(Temp);
+hold on;
+contour(phi_Multi_LBF,[0,0],'r','linewidth',1);
+title('Results of Multi-LBF model');
+
+% figure;
+% imshow(Temp);
+hold on;
+contour(phi_Multi_LBF10,[0,0],'r','linewidth',1);
+title('iter = 10 Results of Multi-LBF model');
+% figure;
+% imshow(Temp);
+hold on;
+contour(phi_Multi_LBF60,[0,0],'r','linewidth',1);
+title('iter = 60 Results of Multi-LBF model');
+
+MultiLBFFilePath = [SaveFilePath,'Multi_LBF\Demo',num2str(ii),'.bmp'];
+
+SaveMultiLBF = phi_Multi_LBF >= 0;
+imshow(SaveMultiLBF)
+hold off
+toc
+time=toc;
+set(handles.edit10,'string',time);
+
+
+% --- Executes during object creation, after setting all properties.
+function axes1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to axes1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: place code in OpeningFcn to populate axes1
+
+
+% --------------------------------------------------------------------
+function Untitled_116_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_116 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+haishenshibie
+
+
+% --------------------------------------------------------------------
+function Untitled_117_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_117 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
