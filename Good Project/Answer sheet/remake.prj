@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration file="C:\Users\jy\Desktop\Answer sheet\remake.prj" location="C:\Users\jy\Desktop\Answer sheet" name="remake" target="target.ezdeploy.standalone" target-name="Application Compiler">
+  <configuration file="D:\F's Project\Github Project\RJ-MatlabCV\Good Project\Answer sheet\remake.prj" location="D:\F's Project\Github Project\RJ-MatlabCV\Good Project\Answer sheet" name="remake" target="target.ezdeploy.standalone" target-name="Application Compiler">
     <param.appname>remake</param.appname>
     <param.icon />
     <param.icons />
@@ -105,9 +105,9 @@
       <file>${PROJECT_ROOT}\WriteInExcel.m</file>
     </fileset.depfun>
     <build-deliverables>
-      <file location="${PROJECT_ROOT}\remake\for_testing" name="splash.png" optional="false">C:\Users\jy\Desktop\Answer sheet\remake\for_testing\splash.png</file>
-      <file location="${PROJECT_ROOT}\remake\for_testing" name="remake.exe" optional="false">C:\Users\jy\Desktop\Answer sheet\remake\for_testing\remake.exe</file>
-      <file location="${PROJECT_ROOT}\remake\for_testing" name="readme.txt" optional="true">C:\Users\jy\Desktop\Answer sheet\remake\for_testing\readme.txt</file>
+      <file location="${PROJECT_ROOT}\remake\for_testing" name="splash.png" optional="false">D:\F's Project\Github Project\RJ-MatlabCV\Good Project\Answer sheet\remake\for_testing\splash.png</file>
+      <file location="${PROJECT_ROOT}\remake\for_testing" name="remake.exe" optional="false">D:\F's Project\Github Project\RJ-MatlabCV\Good Project\Answer sheet\remake\for_testing\remake.exe</file>
+      <file location="${PROJECT_ROOT}\remake\for_testing" name="readme.txt" optional="true">D:\F's Project\Github Project\RJ-MatlabCV\Good Project\Answer sheet\remake\for_testing\readme.txt</file>
     </build-deliverables>
     <workflow />
     <matlab>
