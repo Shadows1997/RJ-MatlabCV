@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration file="C:\Users\jy\Desktop\Advanced_application11111\RGB\RGB_1.prj" location="C:\Users\jy\Desktop\Advanced_application11111\RGB" name="RGB_1" target="target.ezdeploy.standalone" target-name="Application Compiler">
+  <configuration file="D:\F's Project\Github Project\RJ-MatlabCV\Good Project\RGB\RGB_1.prj" location="D:\F's Project\Github Project\RJ-MatlabCV\Good Project\RGB" name="RGB_1" target="target.ezdeploy.standalone" target-name="Application Compiler">
     <param.appname>RGB</param.appname>
     <param.icon />
     <param.icons />
@@ -80,13 +80,17 @@
     <fileset.main>
       <file>${PROJECT_ROOT}\ImageHistograms_rgb.mlapp</file>
     </fileset.main>
-    <fileset.resources />
+    <fileset.resources>
+      <file>${PROJECT_ROOT}\RGB_resources\icon_16.png</file>
+      <file>${PROJECT_ROOT}\RGB_resources\icon_24.png</file>
+      <file>${PROJECT_ROOT}\RGB_resources\icon_48.png</file>
+    </fileset.resources>
     <fileset.package />
     <fileset.depfun />
     <build-deliverables>
-      <file location="${PROJECT_ROOT}\RGB_1\for_testing" name="RGB.exe" optional="false">C:\Users\jy\Desktop\Advanced_application11111\RGB\RGB_1\for_testing\RGB.exe</file>
-      <file location="${PROJECT_ROOT}\RGB_1\for_testing" name="splash.png" optional="false">C:\Users\jy\Desktop\Advanced_application11111\RGB\RGB_1\for_testing\splash.png</file>
-      <file location="${PROJECT_ROOT}\RGB_1\for_testing" name="readme.txt" optional="true">C:\Users\jy\Desktop\Advanced_application11111\RGB\RGB_1\for_testing\readme.txt</file>
+      <file location="${PROJECT_ROOT}\RGB_1\for_testing" name="readme.txt" optional="true">D:\F's Project\Github Project\RJ-MatlabCV\Good Project\RGB\RGB_1\for_testing\readme.txt</file>
+      <file location="${PROJECT_ROOT}\RGB_1\for_testing" name="RGB.exe" optional="false">D:\F's Project\Github Project\RJ-MatlabCV\Good Project\RGB\RGB_1\for_testing\RGB.exe</file>
+      <file location="${PROJECT_ROOT}\RGB_1\for_testing" name="splash.png" optional="false">D:\F's Project\Github Project\RJ-MatlabCV\Good Project\RGB\RGB_1\for_testing\splash.png</file>
     </build-deliverables>
     <workflow />
     <matlab>
