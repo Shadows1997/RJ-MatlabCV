@@ -1,0 +1,2 @@
+运行defectdetection.m文件，在命令行窗口输入deploytool，敲回车，选择第一个打包选项。
+选择defectdetection.m文件进行打包

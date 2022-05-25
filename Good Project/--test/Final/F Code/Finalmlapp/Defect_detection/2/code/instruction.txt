@@ -1,0 +1,5 @@
+本程序在MATLAB R2018b环境下运行正常。
+
+使用方法1：将本文件夹设置为MATLAB当前文件夹，在命令行输入"myDefectDetection"，即可运行图形界面。
+
+使用方法2：将本文件夹设置为MATLAB当前文件夹，在编辑器中打开"myDefectDetection.m"文件，并运行文件，即可运行图形界面。

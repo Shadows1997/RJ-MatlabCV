@@ -1,0 +1,124 @@
+<deployment-project plugin="plugin.apptool" plugin-version="1.0">
+  <configuration build-checksum="3644812223" file="C:\Users\Admin\Desktop\成品\matlab 源码\code\Advanced_application\Answer sheet\answer_sheet.prj" location="C:\Users\Admin\Desktop\成品\matlab 源码\code\Advanced_application\Answer sheet" name="answer_sheet" target="target.mlapps" target-name="打包为 App">
+    <param.appname>answer_sheet</param.appname>
+    <param.authnamewatermark>睿景时代（大连）科技有限公司</param.authnamewatermark>
+    <param.email>engintime@163.com</param.email>
+    <param.company>睿景时代（大连）科技有限公司</param.company>
+    <param.icon />
+    <param.icons />
+    <param.summary>答题卡识别</param.summary>
+    <param.description />
+    <param.screenshot>C:\Users\Admin\AppData\Local\Temp\tp259c86b5_662e_4b9d_bacf_8fa792025127.png</param.screenshot>
+    <param.version>1.0</param.version>
+    <param.products.name />
+    <param.products.id />
+    <param.products.version />
+    <param.platforms />
+    <param.output>${PROJECT_ROOT}</param.output>
+    <param.guid>209ab5d0-3bfd-4c79-ac8d-a13eead4f550</param.guid>
+    <unset>
+      <param.icon />
+      <param.icons />
+      <param.description />
+      <param.version />
+      <param.products.name />
+      <param.products.id />
+      <param.products.version />
+      <param.platforms />
+      <param.output />
+    </unset>
+    <fileset.main>
+      <file>${PROJECT_ROOT}\GUI1_App.mlapp</file>
+    </fileset.main>
+    <fileset.depfun>
+      <file>${PROJECT_ROOT}\Analysis.m</file>
+      <file>${PROJECT_ROOT}\Compute_Angle.m</file>
+      <file>${PROJECT_ROOT}\contrastAnswers.m</file>
+      <file>${PROJECT_ROOT}\gaussianFilter.m</file>
+      <file>${PROJECT_ROOT}\Gray_Convert.m</file>
+      <file>${PROJECT_ROOT}\Hough_Process.m</file>
+      <file>${PROJECT_ROOT}\Image_Binary.m</file>
+      <file>${PROJECT_ROOT}\Image_Normalize.m</file>
+      <file>${PROJECT_ROOT}\Image_Rotate.m</file>
+      <file>${PROJECT_ROOT}\Image_Smooth.m</file>
+      <file>${PROJECT_ROOT}\Location_Label.m</file>
+      <file>${PROJECT_ROOT}\Morph_Process.m</file>
+      <file>${PROJECT_ROOT}\Paper_Inspection.m</file>
+      <file>${PROJECT_ROOT}\Readme.txt</file>
+      <file>${PROJECT_ROOT}\Region_Segmation.m</file>
+      <file>${PROJECT_ROOT}\SimplePaper_Inspection.m</file>
+      <file>${PROJECT_ROOT}\StanderAnswers.xls</file>
+      <file>${PROJECT_ROOT}\Write_Results.m</file>
+      <file>${PROJECT_ROOT}\WriteInExcel.m</file>
+      <file>C:\Users\Admin\Desktop\成品\matlab 源码\code\Advanced_application\samplepicture2.png</file>
+    </fileset.depfun>
+    <fileset.resources />
+    <fileset.package />
+    <build-deliverables>
+      <file location="C:\Users\Admin\Desktop\成品\matlab 源码\code\Advanced_application" name="Answer sheet" optional="false">C:\Users\Admin\Desktop\成品\matlab 源码\code\Advanced_application\Answer sheet</file>
+    </build-deliverables>
+    <workflow />
+    <matlab>
+      <root>C:\Program Files\Polyspace\R2021a</root>
+      <toolboxes>
+        <toolbox name="matlabcoder" />
+        <toolbox name="embeddedcoder" />
+        <toolbox name="gpucoder" />
+        <toolbox name="fixedpoint" />
+        <toolbox name="matlabhdlcoder" />
+        <toolbox name="neuralnetwork" />
+        <toolbox name="polyspacebugfinder" />
+      </toolboxes>
+      <toolbox>
+        <matlabcoder>
+          <enabled>true</enabled>
+        </matlabcoder>
+      </toolbox>
+      <toolbox>
+        <embeddedcoder>
+          <enabled>true</enabled>
+        </embeddedcoder>
+      </toolbox>
+      <toolbox>
+        <gpucoder>
+          <enabled>true</enabled>
+        </gpucoder>
+      </toolbox>
+      <toolbox>
+        <fixedpoint>
+          <enabled>true</enabled>
+        </fixedpoint>
+      </toolbox>
+      <toolbox>
+        <matlabhdlcoder>
+          <enabled>true</enabled>
+        </matlabhdlcoder>
+      </toolbox>
+      <toolbox>
+        <neuralnetwork>
+          <enabled>true</enabled>
+        </neuralnetwork>
+      </toolbox>
+      <toolbox>
+        <polyspacebugfinder>
+          <enabled>true</enabled>
+        </polyspacebugfinder>
+      </toolbox>
+    </matlab>
+    <platform>
+      <unix>false</unix>
+      <mac>false</mac>
+      <windows>true</windows>
+      <win2k>false</win2k>
+      <winxp>false</winxp>
+      <vista>false</vista>
+      <linux>false</linux>
+      <solaris>false</solaris>
+      <osver>10.0</osver>
+      <os32>false</os32>
+      <os64>true</os64>
+      <arch>win64</arch>
+      <matlab>true</matlab>
+    </platform>
+  </configuration>
+</deployment-project>
