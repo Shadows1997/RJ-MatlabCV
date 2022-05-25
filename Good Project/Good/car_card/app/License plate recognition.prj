@@ -1,0 +1,110 @@
+<deployment-project plugin="plugin.apptool" plugin-version="1.0">
+  <configuration build-checksum="3435383582" file="C:\Users\Admin\Desktop\matlab 源码\code\Advanced_application\License_plate_recognition\app\License plate recognition.prj" location="C:\Users\Admin\Desktop\matlab 源码\code\Advanced_application\License_plate_recognition\app" name="License plate recognition" target="target.mlapps" target-name="打包为 App">
+    <param.appname>License plate recognition</param.appname>
+    <param.authnamewatermark>睿景时代（大连）科技有限公司</param.authnamewatermark>
+    <param.email>engintime@163.com</param.email>
+    <param.company>睿景时代（大连）科技有限公司</param.company>
+    <param.icon>${PROJECT_ROOT}\License plate recognition_resources\icon_24.png</param.icon>
+    <param.icons>
+      <file>${PROJECT_ROOT}\License plate recognition_resources\icon_48.png</file>
+      <file>${PROJECT_ROOT}\License plate recognition_resources\icon_24.png</file>
+      <file>${PROJECT_ROOT}\License plate recognition_resources\icon_16.png</file>
+    </param.icons>
+    <param.summary>车牌识别</param.summary>
+    <param.description />
+    <param.screenshot>C:\Users\Admin\Desktop\matlab 源码\code\Datasets\icons\background\logo.jpg</param.screenshot>
+    <param.version>1.0</param.version>
+    <param.products.name />
+    <param.products.id />
+    <param.products.version />
+    <param.platforms />
+    <param.output>${PROJECT_ROOT}</param.output>
+    <param.guid>4a7c3cc7-5473-4b92-afe4-949fc531e14a</param.guid>
+    <unset>
+      <param.description />
+      <param.version />
+      <param.products.name />
+      <param.products.id />
+      <param.products.version />
+      <param.platforms />
+      <param.output />
+    </unset>
+    <fileset.main>
+      <file>${PROJECT_ROOT}\License_plate_recognition.mlapp</file>
+    </fileset.main>
+    <fileset.depfun>
+      <file>C:\Users\Admin\Desktop\matlab 源码\code\Advanced_application\License_plate_recognition\Datasets\cnn_net.mat</file>
+      <file>C:\Users\Admin\Desktop\matlab 源码\code\文件操作\samplepicture1.png</file>
+    </fileset.depfun>
+    <fileset.resources>
+      <file>C:\Users\Admin\Desktop\matlab 源码\code\Advanced_application\License_plate_recognition\test_image</file>
+    </fileset.resources>
+    <fileset.package />
+    <build-deliverables>
+      <file location="C:\Users\Admin\Desktop\matlab 源码\code\Advanced_application\License_plate_recognition" name="app" optional="false">C:\Users\Admin\Desktop\matlab 源码\code\Advanced_application\License_plate_recognition\app</file>
+    </build-deliverables>
+    <workflow />
+    <matlab>
+      <root>C:\Program Files\Polyspace\R2021a</root>
+      <toolboxes>
+        <toolbox name="matlabcoder" />
+        <toolbox name="embeddedcoder" />
+        <toolbox name="gpucoder" />
+        <toolbox name="fixedpoint" />
+        <toolbox name="matlabhdlcoder" />
+        <toolbox name="polyspacebugfinder" />
+        <toolbox name="neuralnetwork" />
+      </toolboxes>
+      <toolbox>
+        <matlabcoder>
+          <enabled>true</enabled>
+        </matlabcoder>
+      </toolbox>
+      <toolbox>
+        <embeddedcoder>
+          <enabled>true</enabled>
+        </embeddedcoder>
+      </toolbox>
+      <toolbox>
+        <gpucoder>
+          <enabled>true</enabled>
+        </gpucoder>
+      </toolbox>
+      <toolbox>
+        <fixedpoint>
+          <enabled>true</enabled>
+        </fixedpoint>
+      </toolbox>
+      <toolbox>
+        <matlabhdlcoder>
+          <enabled>true</enabled>
+        </matlabhdlcoder>
+      </toolbox>
+      <toolbox>
+        <polyspacebugfinder>
+          <enabled>true</enabled>
+        </polyspacebugfinder>
+      </toolbox>
+      <toolbox>
+        <neuralnetwork>
+          <enabled>true</enabled>
+        </neuralnetwork>
+      </toolbox>
+    </matlab>
+    <platform>
+      <unix>false</unix>
+      <mac>false</mac>
+      <windows>true</windows>
+      <win2k>false</win2k>
+      <winxp>false</winxp>
+      <vista>false</vista>
+      <linux>false</linux>
+      <solaris>false</solaris>
+      <osver>10.0</osver>
+      <os32>false</os32>
+      <os64>true</os64>
+      <arch>win64</arch>
+      <matlab>true</matlab>
+    </platform>
+  </configuration>
+</deployment-project>
