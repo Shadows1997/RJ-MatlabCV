@@ -1,11 +1,11 @@
 clc; clear all; close all;
 warning off all;
 %读取图像
-I = imread('images\\3.jpg');
+I = imread('3.jpg');
 %预处理
 I1 = Image_Normalize(I, 0);
 %平滑处理，模板尺寸[3 3]，sigma角0.5，平滑方式：高斯滤波
-hsize = [3 3];
+hsize = [9 9];
 sigma = 0.5;
 I2 = Image_Smooth(I1, hsize, sigma, 0);
 %灰度化

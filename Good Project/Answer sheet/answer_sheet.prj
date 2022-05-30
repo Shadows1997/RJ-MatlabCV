@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.apptool" plugin-version="1.0">
-  <configuration build-checksum="3644812223" file="C:\Users\Admin\Desktop\成品\matlab 源码\code\Advanced_application\Answer sheet\answer_sheet.prj" location="C:\Users\Admin\Desktop\成品\matlab 源码\code\Advanced_application\Answer sheet" name="answer_sheet" target="target.mlapps" target-name="打包为 App">
+  <configuration build-checksum="3644812223" file="C:\Users\dash\Documents\GitHub\RJ-MatlabCV\Good Project\Answer sheet\answer_sheet.prj" location="C:\Users\dash\Documents\GitHub\RJ-MatlabCV\Good Project\Answer sheet" name="answer_sheet" target="target.mlapps" target-name="打包为 App">
     <param.appname>answer_sheet</param.appname>
     <param.authnamewatermark>睿景时代（大连）科技有限公司</param.authnamewatermark>
     <param.email>engintime@163.com</param.email>
@@ -8,7 +8,7 @@
     <param.icons />
     <param.summary>答题卡识别</param.summary>
     <param.description />
-    <param.screenshot>C:\Users\Admin\AppData\Local\Temp\tp259c86b5_662e_4b9d_bacf_8fa792025127.png</param.screenshot>
+    <param.screenshot />
     <param.version>1.0</param.version>
     <param.products.name />
     <param.products.id />
@@ -20,6 +20,7 @@
       <param.icon />
       <param.icons />
       <param.description />
+      <param.screenshot />
       <param.version />
       <param.products.name />
       <param.products.id />
@@ -31,6 +32,7 @@
       <file>${PROJECT_ROOT}\GUI1_App.mlapp</file>
     </fileset.main>
     <fileset.depfun>
+      <file>C:\Users\Admin\Desktop\成品\matlab 源码\code\Advanced_application\samplepicture2.png</file>
       <file>${PROJECT_ROOT}\Analysis.m</file>
       <file>${PROJECT_ROOT}\Compute_Angle.m</file>
       <file>${PROJECT_ROOT}\contrastAnswers.m</file>
@@ -50,16 +52,15 @@
       <file>${PROJECT_ROOT}\StanderAnswers.xls</file>
       <file>${PROJECT_ROOT}\Write_Results.m</file>
       <file>${PROJECT_ROOT}\WriteInExcel.m</file>
-      <file>C:\Users\Admin\Desktop\成品\matlab 源码\code\Advanced_application\samplepicture2.png</file>
     </fileset.depfun>
     <fileset.resources />
     <fileset.package />
     <build-deliverables>
-      <file location="C:\Users\Admin\Desktop\成品\matlab 源码\code\Advanced_application" name="Answer sheet" optional="false">C:\Users\Admin\Desktop\成品\matlab 源码\code\Advanced_application\Answer sheet</file>
+      <file location="C:\Users\dash\Documents\GitHub\RJ-MatlabCV\Good Project" name="Answer sheet" optional="false">C:\Users\dash\Documents\GitHub\RJ-MatlabCV\Good Project\Answer sheet</file>
     </build-deliverables>
     <workflow />
     <matlab>
-      <root>C:\Program Files\Polyspace\R2021a</root>
+      <root>D:\CodeTools\Matlab</root>
       <toolboxes>
         <toolbox name="matlabcoder" />
         <toolbox name="embeddedcoder" />
@@ -67,7 +68,6 @@
         <toolbox name="fixedpoint" />
         <toolbox name="matlabhdlcoder" />
         <toolbox name="neuralnetwork" />
-        <toolbox name="polyspacebugfinder" />
       </toolboxes>
       <toolbox>
         <matlabcoder>
@@ -98,11 +98,6 @@
         <neuralnetwork>
           <enabled>true</enabled>
         </neuralnetwork>
-      </toolbox>
-      <toolbox>
-        <polyspacebugfinder>
-          <enabled>true</enabled>
-        </polyspacebugfinder>
       </toolbox>
     </matlab>
     <platform>

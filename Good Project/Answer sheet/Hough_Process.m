@@ -13,8 +13,10 @@ if nargin < 3
 end
 %hough变换
 [H, T, R] = hough(bw);%H为hough矩阵，T为theta，R为rho
-P = houghpeaks(H, 4, 'threshold', ceil(0.3*max(H(:))));
-lines = houghlines(bw, T, R, P, 'FillGap', 50, 'MinLength', 7);
+P = houghpeaks(H, 4, 'threshold', ceil(0.3*max(H(:))))
+x = T(P(:,2)); y = R(P(:,1));
+plot(x,y,'s','color','white');
+lines = houghlines(bw, T, R, P,'FillGap',5, 'MinLength',7);
 max_len = 0;
 %遍历直线信息
 for k = 1 : length(lines)
