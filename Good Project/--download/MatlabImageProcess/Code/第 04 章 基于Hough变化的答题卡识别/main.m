@@ -1,6 +1,6 @@
 clc; clear all; close all;
 warning off all;
-I = imread('images\\1.jpg');
+I = imread('images\1.jpg');
 I1 = Image_Normalize(I, 1);
 hsize = [3 3];
 sigma = 0.5;
