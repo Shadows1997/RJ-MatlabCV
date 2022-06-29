@@ -2,6 +2,7 @@ function varargout = Color_Detect(varargin)
 % COLOR_DETECT MATLAB code for Color_Detect.fig
 %      COLOR_DETECT, by itself, creates a new COLOR_DETECT or raises the existing
 %      singleton*.
+
 %
 %      H = COLOR_DETECT returns the handle to a new COLOR_DETECT or the handle to
 %      the existing singleton*.

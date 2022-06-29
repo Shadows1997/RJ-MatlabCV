@@ -389,11 +389,11 @@ imshow(im2);
 
 
 % --- Executes on button press in hitmiss.
-function hitmiss_Callback(hObject, eventdata, handles)
-global im2
-im2=hitmiss(im2);
-axes(handles.axes2);
-imshow(im2);
+% function hitmiss_Callback(hObject, eventdata, handles)
+% global im2
+% im2=hitmiss(im2);
+% axes(handles.axes2);
+% imshow(im2);
 
 
 % --- Executes on button press in WeinerFilter.
