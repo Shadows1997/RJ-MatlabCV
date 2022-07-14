@@ -1,0 +1,1 @@
+ gtext('Four Lines Demo')

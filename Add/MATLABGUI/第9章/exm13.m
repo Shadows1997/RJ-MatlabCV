@@ -1,0 +1,3 @@
+htDemo=uicontrol(hf,'Style','text',...           %ÎÄ±¾±êÇ©
+                  'Position',[300 350 100 20],...
+                  'String','Static Text'); 

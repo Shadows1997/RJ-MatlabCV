@@ -1,0 +1,1 @@
+hc=uisetcolor('Ñ¡ÔñÑÕÉ«')
