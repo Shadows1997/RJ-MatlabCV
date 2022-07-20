@@ -737,3 +737,14 @@ function snap_button_ButtonDownFcn(hObject, eventdata, handles)
 % hObject    handle to snap_button (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+end
+
+
+% --- Executes during object creation, after setting all properties.
+function live_axis_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to live_axis (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: place code in OpeningFcn to populate live_axis
+end

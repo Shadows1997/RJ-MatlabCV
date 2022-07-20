@@ -1,1 +1,0 @@
-hc=uisetcolor('Ñ¡ÔñÑÕÉ«')
